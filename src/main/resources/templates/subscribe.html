@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="subscribe" type="uk.co.edbrook.async.domain.Subscribe"*/-->
+<div>
+    <form th:action="@{/subscribe}" method="post" th:object="${subscribe}">
+        <div><label>Name: <input id="name" th:field="*{name}"/></label></div>
+        <div><label>Email: <input id="email" th:field="*{email}"/></label></div>
+        <div><button type="submit">Subscribe</button></div>
+        <ul th:if="${#fields.hasErrors()}">
+            <li th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></li>
+            <li th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></li>
+        </ul>
+    </form>
+</div>
+</body>
+</html>
